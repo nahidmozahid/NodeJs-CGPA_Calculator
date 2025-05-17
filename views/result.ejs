@@ -1,0 +1,16 @@
+<%- include('partials/header') %>
+
+<h2 class="mb-4">CGPA Calculation Result</h2>
+
+<ul class="list-group">
+  <li class="list-group-item"><strong>Name:</strong> <%= name %></li>
+  <li class="list-group-item"><strong>Age:</strong> <%= age %></li>
+  <li class="list-group-item"><strong>University:</strong> <%= university %></li>
+  <li class="list-group-item"><strong>Roll Number:</strong> <%= roll %></li>
+  <li class="list-group-item"><strong>Semesters Completed:</strong> <%= semester %></li>
+  <li class="list-group-item"><strong>Average CGPA:</strong> <%= averageCgpa %></li>
+</ul>
+
+<a href="/" class="btn btn-secondary mt-4">Calculate Again</a>
+
+<%- include('partials/footer') %>

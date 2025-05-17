@@ -1,0 +1,111 @@
+<%- include('partials/header') %>
+
+<h2 class="mb-4">Enter your details</h2>
+
+<% if (typeof error !== 'undefined') { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+
+<form method="POST" action="/calculate" class="needs-validation" novalidate>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      value="<%= formData?.name || '' %>"
+      required
+    />
+    <div class="invalid-feedback">Please enter your name.</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input
+      type="number"
+      class="form-control"
+      id="age"
+      name="age"
+      value="<%= formData?.age || '' %>"
+      required
+      min="1"
+    />
+    <div class="invalid-feedback">Please enter a valid age.</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="university" class="form-label">University</label>
+    <input
+      type="text"
+      class="form-control"
+      id="university"
+      name="university"
+      value="<%= formData?.university || '' %>"
+      required
+    />
+    <div class="invalid-feedback">Please enter your university name.</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="roll" class="form-label">Roll Number</label>
+    <input
+      type="text"
+      class="form-control"
+      id="roll"
+      name="roll"
+      value="<%= formData?.roll || '' %>"
+      required
+    />
+    <div class="invalid-feedback">Please enter your roll number.</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="semester" class="form-label">Number of Semesters</label>
+    <input
+      type="number"
+      class="form-control"
+      id="semester"
+      name="semester"
+      value="<%= formData?.semester || '' %>"
+      required
+      min="1"
+    />
+    <div class="invalid-feedback">Please enter number of semesters.</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="cgpas" class="form-label">CGPAs (comma separated)</label>
+    <input
+      type="text"
+      class="form-control"
+      id="cgpas"
+      name="cgpas"
+      value="<%= formData?.cgpas || '' %>"
+      placeholder="e.g. 3.5, 3.7, 3.8"
+      required
+    />
+    <div class="invalid-feedback">Please enter CGPAs for each semester, separated by commas.</div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Calculate</button>
+</form>
+
+<script>
+  // Bootstrap validation
+  (() => {
+    'use strict';
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+</script>
+
+<%- include('partials/footer') %>
